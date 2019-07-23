@@ -40,7 +40,7 @@ include("email.php");
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
 
-    <a class="device-notification--logo" href="www.binaydahal.com.np">
+    <a class="device-notification--logo" href="http://www.binaydahal.com.np">
       <img src="assets/img/logo.png" alt="logo">
       <p>Binay Dahal</p>
     </a>
@@ -55,7 +55,7 @@ include("email.php");
       <div class="l-wrapper">
         <header class="header">
           <div class=zoom>
-          <a class="header--logo" href="#0">
+          <a class="header--logo" href="http://www.binaydahal.com.np">
             <img src="assets/img/logo.png" alt="logo">
             <p>Binay Dahal</p>
           </a>
@@ -72,6 +72,7 @@ include("email.php");
             <li><span>About</span></li>
             <li><span>Contact</span></li>
             <li><span>Hire me</span></li>
+            
           </ul>
         </nav>
         <ul class="l-main-content main-content">
@@ -223,7 +224,7 @@ include("email.php");
             <div class="hire">
               <h2>Lets work together</h2>
               <!-- checkout formspree.io for easy form setup -->
-              <form class="work-request">
+              <form class="work-request"  method="post" action="contact/contactengine.php" id="contactform" >
                 <div class="work-request--options">
                   <span class="options-a">
 
@@ -315,26 +316,29 @@ include("email.php");
                   </span>
                 </div>
                 <div class="work-request--information">
+                  
                   <div class="information-name">
-                    <input id="name" type="text" spellcheck="false">
+                    <input id="Name" type="text" spellcheck="false">
                     <label for="name">Name</label>
                   </div>
+                  
                   <div class="information-email">
-                    <input id="email" type="email" spellcheck="false">
+                    <input id="Email" type="email" spellcheck="false">
                     <label for="email">Email</label>
                   </div>
+                  
                   <div class="information-email">
-                    <input id="message" type="text" spellcheck="false">
+                    <input id="Message" type="text" spellcheck="false">
                     <label for="message">Message</label>
                   </div>     
                  
-
-
                 </div>
-                <input type="submit" value="Send Request" name="sendEmail">
+                <input type="submit" value="Send Request"  name="submit" class="submit-button">
               </form>
             </div>
           </li>
+        
+
         </ul>
       </div>
     </div>
@@ -345,6 +349,7 @@ include("email.php");
     <li>About</li>
     <li>Contact</li>
     <li>Hire me</li>
+      
   </ul>
 </div>
 
