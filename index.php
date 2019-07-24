@@ -1,6 +1,3 @@
-<?php 
-include("email.php");
-?>
 
 
 <!DOCTYPE html>
