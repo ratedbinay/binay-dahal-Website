@@ -84,7 +84,7 @@ $_SESSION['loginstatus'] = "loggedout";
 							?>
 							<script type="text/javascript">
 																
-								window.location.replace("BlogForm.php");
+								window.location.replace("blogform.php");
 							</script>
 						<?php
 						} else {

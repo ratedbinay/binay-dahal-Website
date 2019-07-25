@@ -9,9 +9,17 @@ if (isset($_SESSION['loginstatus'])) {
             window.location.replace("index.php");
         </script>
     <?php
-    }
+    } else { }
+} else {
+    ?>
+    <script type="text/javascript">
+        window.location.replace("index.php");
+    </script>
+<?php
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -56,33 +64,33 @@ if (isset($_SESSION['loginstatus'])) {
 
                         <div class="form-group">
                             <label for="BlogImage">Select Image</label>
-                            <input type="file" class="form-control-file" accept="image/*" required="required" id="BlogImage"/>
-                       
+                            <input type="file" class="form-control-file" accept="image/*" required="required" id="BlogImage" />
+
 
                         </div>
 
                         <div class="form-group" id="categories">
                             <label for="Category">
                                 Category : </label> <br>
-                           
-                                <!-- <input type="text" class="form-control" id="Category" placeholder="Enter Category " required="required" /> -->
-                                <label for="Sports" >  Sports <input type="checkbox" name="categories" id="Sports" class="badgebox"><span class="badge"></span></label>
-                                <label for="Music" >  Music <input type="checkbox" name="categories" id="Music" class="badgebox"><span class="badge"></span></label>
-                                <label for="Movie" >  Movie <input type="checkbox" name="categories" id="Movie" class="badgebox"><span class="badge"></span></label>
-                                <label for="Programming">  Programming <input type="checkbox" name="categories" id="Programming" class="badgebox"><span class="badge"></span></label>
-                                <label for="Desiging">  Desiging <input type="checkbox" name="categories" id="Desiging" class="badgebox"><span class="badge"></span></label>
-                                <label for="Story">  Story <input type="checkbox" name="categories" id="Story" class="badgebox"><span class="badge"></span></label>
-                                <label for="Poetry">  Poetry <input type="checkbox" name="categories" id="Poetry" class="badgebox"><span class="badge"></span></label>
-                                <label for="Experience">  Experience <input type="checkbox" name="categories" id="Experience" class="badgebox"><span class="badge"></span></label>
-                                <label for="Politics">  Politics <input type="checkbox" name="categories" id="Politics" class="badgebox"><span class="badge"></span></label>
-                                <label for="Other">  Other <input type="checkbox" name="categories" id="Other" class="badgebox"><span class="badge"></span></label>
 
-                            </div>
+                            <!-- <input type="text" class="form-control" id="Category" placeholder="Enter Category " required="required" /> -->
+                            <label for="Sports"> Sports <input type="checkbox" name="categories" id="Sports" class="badgebox"><span class="badge"></span></label>
+                            <label for="Music"> Music <input type="checkbox" name="categories" id="Music" class="badgebox"><span class="badge"></span></label>
+                            <label for="Movie"> Movie <input type="checkbox" name="categories" id="Movie" class="badgebox"><span class="badge"></span></label>
+                            <label for="Programming"> Programming <input type="checkbox" name="categories" id="Programming" class="badgebox"><span class="badge"></span></label>
+                            <label for="Desiging"> Desiging <input type="checkbox" name="categories" id="Desiging" class="badgebox"><span class="badge"></span></label>
+                            <label for="Story"> Story <input type="checkbox" name="categories" id="Story" class="badgebox"><span class="badge"></span></label>
+                            <label for="Poetry"> Poetry <input type="checkbox" name="categories" id="Poetry" class="badgebox"><span class="badge"></span></label>
+                            <label for="Experience"> Experience <input type="checkbox" name="categories" id="Experience" class="badgebox"><span class="badge"></span></label>
+                            <label for="Politics"> Politics <input type="checkbox" name="categories" id="Politics" class="badgebox"><span class="badge"></span></label>
+                            <label for="Other"> Other <input type="checkbox" name="categories" id="Other" class="badgebox"><span class="badge"></span></label>
+
+                        </div>
 
                         <div class="form-group">
                             <label for="Tags">
                                 Tags</label>
-                                
+
                             <input type="text" class="form-control" id="Tags" placeholder="Enter Tags " required="required" />
                         </div>
 
