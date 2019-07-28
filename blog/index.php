@@ -71,13 +71,15 @@ include("../config.php");
   <?php
 
 //$titlequery= "Select Title  From tblblog Where SN='1' ";
-$Title=mysqli_query($con, "Select Title From tblblog Where SN='1' ");
+$Titlequery=mysqli_query($con, "Select Title From tblblog Where SN='1' ");
+$Title=mysqli_fetch_array($Titlequery);
 
-$Datequery= "Select Date 
-        From tblblog
-        Where SN=1          
-";
-$Date=mysqli_query($con, $Datequery);
+
+$Datequery=mysqli_query($con, "Select Date From tblblog Where SN=1");
+$Date=mysqli_fetch_array($Datequery);
+
+$imagequery=mysqli_query($con, "Select Image From tblblog Where SN=1");
+$image=mysqli_fetch_array($imagequery);
 
 
 ?>
@@ -91,12 +93,12 @@ $Date=mysqli_query($con, $Datequery);
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
            
-          <h1>.$Title.</h1>
+          <h1><?php echo $Title['Title']; ?></h1>
           
             <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
             <span class="meta">Posted by
-              <a href="#">Start Bootstrap</a>
-              on <?php echo $Date; ?></span>
+              <a href="../index.php">Binay Dahal</a>
+              on <?php echo $Date['Date']; ?></span>
           </div>
         </div>
       </div>

@@ -52,11 +52,16 @@ include("../config.php");
             <div class="well well-sm">
                 <form method="POST">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label for="Title">
                                     Title</label>
                                 <input type="text" class="form-control" name="Title" id="Title" placeholder="Enter Title" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="SubTitle">
+                                    Sub Title</label>
+                                <input type="text" class="form-control" name="SubTitle" id="SubTitle" placeholder="Enter Sub Title" required="required" />
                             </div>
                             <div class="form-group">
                                 <label for="Date">
@@ -101,6 +106,10 @@ include("../config.php");
 
                         </div>
                         <div class="col-md-8">
+
+
+                        </div>
+                        <!-- <div class="col-md-8">
                             <div class="form-group">
                                 <label for="BlogDetails">
                                     <div style="float: left; padding: 10px;">Blog Details :</div>
@@ -111,10 +120,10 @@ include("../config.php");
                                 <textarea name="BlogDetails" onblur="textCounter(this,this.form.counter,2000);" onkeyup="textCounter(this,this.form.counter,2000);" id="BlogDetails" class="form-control" rows="19" cols="25" required="required" placeholder="Enter Blog Details Here"></textarea>
 
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12">
                             <button type="submit" name="saveblog" class="btn btn-primary pull-right" id="btnContactUs">
-                                Save Blog</button>
+                                Next</button>
                         </div>
                     </div>
                 </form>
@@ -145,38 +154,43 @@ if (isset($_POST['saveblog'])) {
     //foreach($_POST['categories'] as $selected)
     //echo $selected;
     $Title = $_POST['Title'];
+    $SubTitle = $_POST['SubTitle'];
     $blogDate = $_POST['Date'];
     $blogImage = $_POST['BlogImage'];
 
     $Category = implode(", ", $_POST['categories']);
     // echo $Category;
     $Tags = $_POST['Tags'];
-    $Details = $_POST['BlogDetails'];
+    //$Details = $_POST['BlogDetails'];
 
-    $Serial = " SELECT SN FROM tblblog  
-    ORDER BY SN DESC  
-    LIMIT 1";
+    $Serialquery = mysqli_query($con, "SELECT SN FROM tblblog ORDER BY SN DESC LIMIT 1");
+    $Serial2=mysqli_fetch_array($Serialquery);
+    $Serial=(int)$Serial2;
     $Serial=$Serial+1;
-    echo $Serial;
+    
 
     $query = "INSERT INTO tblblog SET 
                  SN='$Serial',
                  Title='$Title',
+                 SubTitle='$SubTitle',
                  Date='$blogDate',
                  Image='$blogImage',
                  Category='$Category',
-                 Tags='$Tags',
-                 Details='$Details'
+                 Tags='$Tags'
+                 
                  ";
+                 $_SESSION['BlogTitle'] = $Title;
+                 $_SESSION['SerialNum'] = $Serial;
 
     if (mysqli_query($con, $query)) {
 
         echo "<script type='text/javascript'>
                     alert('submitted successfully!');
-                    window.location.replace('blogform.php');
+                    window.location.replace('blogbody.php');
                     </script>";
     } else {
-        echo "<script type='text/javascript'>alert('failed!')</script>";
+        echo "<script type='text/javascript'>alert('failed!'); 
+        </script>";
     }
     mysqli_close($con);
 }
