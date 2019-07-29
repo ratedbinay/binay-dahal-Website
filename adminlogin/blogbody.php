@@ -17,7 +17,6 @@ if (isset($_SESSION['loginstatus'])) {
     </script>
 <?php
 }
-
 include("../config.php");
 ?>
 
@@ -63,13 +62,13 @@ $SN = $_SESSION['SerialNum'];
                             <!-- <textarea id="txtEditor" name="Detailhere" placeholder="Enter Blog Details Here"></textarea> -->
 
                             <div class="form-group">
-                                <label for="BlogDetails">
+                                <label>
                                     <div style="float: left; padding: 10px;">Blog Details :</div>
                                 </label>
                                 <div style="float: right; padding: 10px;"> Characters left
-                                    <input onblur="textCounter(this.form.recipients,this,2000);" disabled onfocus="this.blur();" tabindex="2000" maxlength="3" size="3" value="2000" name="counter">
+                                    <input onblur="textCounter(this.form.recipients,this,6000);" disabled onfocus="this.blur();" tabindex="6000" maxlength="3" size="3" value="6000" name="counter">
                                 </div>
-                                <textarea name="BlogDetails" onblur="textCounter(this,this.form.counter,2000);" onkeyup="textCounter(this,this.form.counter,2000);" id="BlogDetails" class="form-control" rows="19" cols="25" required="required" placeholder="Enter Blog Details Here"></textarea>
+                                <textarea name="BlogDetail" onblur="textCounter(this,this.form.counter,6000);" onkeyup="textCounter(this,this.form.counter,6000);" id="BlogDetails" class="form-control" rows="19" cols="25" required="required" placeholder="Enter Blog Details Here"></textarea>
                             </div>
                         </div>
                     </div>
@@ -96,27 +95,32 @@ $SN = $_SESSION['SerialNum'];
 </script>
 
 <?php
-$Details = $_POST['BlogDetails'];
+
 if (isset($_POST['saveblog'])) {
+    $Details = $_POST['BlogDetail'];
+
     if (!empty($Details)) {
-       echo $SN;
-        $query = "INSERT INTO tblblog SET Details='$Details'   WHERE SN= '$SN'  ";
+        // $Details = $_POST['BlogDetail'];
+
+        
+        $query = "INSERT INTO binay_blog.tblblog(Details)
+        Select '$Details'
+        From binay_blog.tblblog
+        WHERE 'SN' = '$SN'
+                 ";
+
 
         if (mysqli_query($con, $query)) {
-
             echo "<script type='text/javascript'>
                     alert('submitted successfully!');
-
+                    window.location.replace('blogform.php');
                     </script>";
         } else {
-
-            echo "<script type='text/javascript'>alert('failed!'); 
-        </script>";
-        }
-        mysqli_close($con);
-    } else {
-        echo "Please fill the blog details";
+            echo mysqli_error($con);
+           // echo "<script type='text/javascript'>alert('failed!')      </script>";
+        }   
     }
-}
+    mysqli_close($con);
+} 
 
 ?>

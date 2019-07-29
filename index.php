@@ -183,6 +183,7 @@ include "contact/contactengine.php";
                   <h2>I<br>believe in<br>Creativity in<br>Team Work</h2>
                   <a href="resume.html">My Resume</a>
                   <a href="portfolio">Portfolio</a>
+                  <a href="Blog">Blog</a>
                   <img src="assets/img/about-me.png" alt="About Me">
                 </div>
                 <div class="about--options">

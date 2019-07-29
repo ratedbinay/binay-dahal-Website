@@ -10,7 +10,8 @@ if (isset($_SESSION['loginstatus'])) {
         </script>
     <?php
     } else { }
-} else {
+} 
+else {
     ?>
     <script type="text/javascript">
         window.location.replace("index.php");
@@ -164,10 +165,9 @@ if (isset($_POST['saveblog'])) {
     //$Details = $_POST['BlogDetails'];
 
     $Serialquery = mysqli_query($con, "SELECT SN FROM tblblog ORDER BY SN DESC LIMIT 1");
-    $Serial2=mysqli_fetch_array($Serialquery);
-    $Serial=(int)$Serial2;
-    $Serial=$Serial+1;
-    
+ //   echo $Serialquery;
+    $Serial2=mysqli_fetch_assoc($Serialquery);
+     $Serial=$Serial2['SN']+1;
 
     $query = "INSERT INTO tblblog SET 
                  SN='$Serial',
@@ -176,9 +176,16 @@ if (isset($_POST['saveblog'])) {
                  Date='$blogDate',
                  Image='$blogImage',
                  Category='$Category',
-                 Tags='$Tags'
-                 
+                 Tags='$Tags'                 
                  ";
+
+                 /* echo $Serial;
+                  echo $Title;
+                  echo $SubTitle;
+                  echo $blogDate;
+                  echo $blogImage;
+                  echo $Category;
+                  echo $Tags;*/
                  $_SESSION['BlogTitle'] = $Title;
                  $_SESSION['SerialNum'] = $Serial;
 
@@ -189,8 +196,10 @@ if (isset($_POST['saveblog'])) {
                     window.location.replace('blogbody.php');
                     </script>";
     } else {
-        echo "<script type='text/javascript'>alert('failed!'); 
-        </script>";
+        echo  mysqli_error($con);
+        /*"<script type='text/javascript'>alert('failed!'); 
+        window.location.replace('blogform.php');
+        </script>";*/
     }
     mysqli_close($con);
 }
